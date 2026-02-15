@@ -867,18 +867,39 @@ button { background: var(--accent); color: white; border: none; padding: 10px; b
 @keyframes pulse-btn { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
 .pulse-anim { animation: pulse-btn 2s infinite; }
 /* Couleurs spécifiques au survol */
+/* --- BARRE DE RÉSEAUX --- */
+.social-links {
+    margin-top: 25px;
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+}
+
+.social-icon {
+    font-size: 2rem;
+    color: #64748b;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    text-decoration: none;
+    display: inline-block;
+}
+
+.social-icon:hover {
+    transform: translateY(-5px) scale(1.1);
+}
+
+/* Couleurs spécifiques */
 .social-icon.github:hover {
     color: #ffffff;
     text-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
 }
 
-/* REMPLACEMENT DU BLOC LINKEDIN PAR CELUI-CI : */
+/* CŒUR ROUGE (Correction appliquée) */
 .social-icon.support:hover {
-    color: #f43f5e; /* Un joli rose/rouge néon */
-    text-shadow: 0 0 15px rgba(244, 63, 94, 0.8);
+    color: #ef4444; /* Rouge Néon */
+    text-shadow: 0 0 15px rgba(239, 68, 68, 0.8);
 }
 
 .social-icon.email:hover {
-    color: #10b981; /* Vert Cybersécurité */
+    color: #10b981; /* Vert */
     text-shadow: 0 0 15px rgba(16, 185, 129, 0.8);
 }
