@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Lights Out AI - Master Edition</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+    <div id="menu">
+        <div class="header-neon">
+            <h1 class="neon-title">
+                LIGHTS 
+                <i class="fas fa-lightbulb neon-bulb"></i>
+                UT
+            </h1>
+            <div class="neon-line"></div>
+        </div>
+        
+        <div class="menu-card full-width">
+            <h4>🧠 Configuration du Cerveau de l'IA</h4>
+            <div class="ai-selector-container">
+                <select id="ai-mode-select" class="custom-select">
+                    <option value="chasing" selected>Mode Chasing (Visuel / Pas à pas)</option>
+                    <option value="math">Mode Mathématique (Gauss-Jordan / Optimal)</option>
+                </select>
+                <div class="extra-buttons">
+                    <a href="ia_info.html" class="btn-link info-btn">🔍 Infos Modes</a>
+                    <a href="createur.html" class="btn-link promo-btn">🚀 Créateur</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="menu-grid">
+            <div class="menu-card">
+                <h4>⚡ Partie Rapide</h4>
+                <div class="btn-group-grid">
+                    <button onclick="startGame(3)">3x3</button>
+                    <button onclick="startGame(4)">4x4</button>
+                    <button onclick="startGame(5)">5x5</button>
+                    <button onclick="startGame(6)">6x6</button>
+                </div>
+            </div>
+            
+            <div class="menu-card">
+                <h4>🛠️ Configuration</h4>
+                <div class="input-row">
+                    <div class="input-field">
+    <span>Lignes (max 8)</span>
+    <input type="number" id="custom-rows" value="5" min="1" max="8" oninput="updatePreview()">
+</div>
+<div class="input-field">
+    <span>Colonnes (max 8)</span>
+    <input type="number" id="custom-cols" value="5" min="1" max="8" oninput="updatePreview()">
+</div>
+                </div>
+                <button onclick="startCustomMode()" class="accent-btn" style="width:100%; margin-top:10px;">Mode Création</button>
+            </div>
+
+            <div class="menu-card preview-card">
+                <h4>👁️ Aperçu</h4>
+                <div id="grid-preview-container">
+                    </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="game-layout" class="hidden">
+        <div class="main-column">
+            <div class="status-bar">
+                <div id="timer-display">TEMPS : 00:00</div>
+                <div id="mode-display">IA : <span id="current-ai-name">Chasing</span></div>
+            </div>
+            
+            <div id="grid-container">
+                <div id="grid" class="grid"></div>
+            </div>
+            
+            <div class="controls">
+                <div class="ai-group">
+                    <button id="btn-play" onclick="toggleAI()">Lecture IA</button>
+                    <button onclick="getHint()" class="hint-btn">💡 Indice</button>
+                    <button onclick="undoMove()" class="undo-btn">↶ Annuler</button>
+                    <button onclick="stopAI()" class="danger-btn">Stop</button>
+                </div>
+                <button class="back-btn" onclick="showMenu()">Menu Principal</button>
+            </div>
+        </div>
+
+        <div id="log-panel">
+            <h3>HISTORIQUE IA</h3>
+            <div id="move-list"></div>
+        </div>
+    </div>
+
+    <div id="ai-assistant">
+        <div id="assistant-bubble" class="bubble hidden-bubble">
+            <p id="assistant-text">Besoin d'aide ?</p>
+        </div>
+        
+        <div class="robot-container">
+            <img src="https://www.pngall.com/wp-content/uploads/15/ChatBot-PNG-Image-HD.png" 
+                 alt="Robot AI" class="robot-img" onclick="getHint()">
+            <div id="robot-name-display" class="robot-name mode-chasing">IA CHASING</div>
+        </div>
+    </div>
+
+    <button id="btn-start-custom" class="hidden floating-btn" onclick="checkAndPlayCustom()">JOUER CETTE GRILLE</button>
+
+    <div id="victory-overlay" class="overlay hidden">
+        <div class="victory-card">
+            <h2>OBJECTIF ATTEINT</h2>
+            <div class="score-board">
+                <p>Humain : <span id="player-moves">0</span> coups</p>
+                <p>Robot : <span id="ai-moves">0</span> coups</p>
+                <p>Temps : <span id="final-time">00:00</span></p>
+            </div>
+            <div class="victory-buttons">
+                <button onclick="location.reload()">Nouvelle Partie</button>
+                <button onclick="showMenu()">Menu</button>
+            </div>
+        </div>
+    </div>
+    
+    <button id="btn-sound-toggle" class="floating-sound-btn" onclick="toggleSound()">
+        <i class="fas fa-volume-high"></i>
+    </button>
+
+    <script src="script.js"></script>
+</body>
+</html>
+</body>
+</html>

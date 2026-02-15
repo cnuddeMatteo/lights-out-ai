@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Fonctionnement des IA - Lights Out</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="overlay-page-static">
+        <div class="content-card full-page-card">
+            
+            <div class="intro-text">
+                <h1 class="neon-title" style="font-size: 2.5rem;">LE CODE DE LA MATRICE</h1>
+                <div class="neon-line"></div>
+                <p>Deux méthodes, deux philosophies.</p>
+            </div>
+
+            <div class="tab-container">
+                <button class="tab-btn active" onclick="switchTab('history')">
+                    <i class="fas fa-book"></i> Théorie & Histoire
+                </button>
+                <button class="tab-btn" onclick="switchTab('lab')">
+                    <i class="fas fa-microchip"></i> Laboratoire de Calcul
+                </button>
+            </div>
+
+            <hr class="divider">
+
+            <div id="view-history" class="tab-content">
+                
+                <div class="history-block">
+                    <h3><i class="fas fa-history"></i> Origines du Jeu</h3>
+                    <p>
+                        Le jeu <b>Lights Out</b> a été commercialisé en <b>1995</b> par <i>Tiger Electronics</i>. 
+                        Il a été inventé par un groupe de développeurs : Avi Olti, Gyora Benedek, Zvi Ruder et Rafi Ben-Eliyahu.
+                    </p>
+                </div>
+
+                <div class="algo-section">
+                    <div class="algo-header mode-chasing-header">
+                        <h2><i class="fas fa-running"></i> 1. L'Algorithme "Light Chasing"</h2>
+                        <span class="badge chasing">Heuristique</span>
+                    </div>
+                    <div class="algo-content">
+                        <p>C'est la méthode "nettoyeur". L'IA ne réfléchit pas à l'ensemble du puzzle, elle agit ligne par ligne.</p>
+                        <div class="concept-box">
+                            <h4>🔧 La Règle d'Or</h4>
+                            <p>Si une lumière est allumée à la position <b>(Ligne X)</b>, l'IA clique obligatoirement sur la case juste en dessous <b>(Ligne X+1)</b>.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="algo-section">
+                    <div class="algo-header mode-math-header">
+                        <h2><i class="fas fa-calculator"></i> 2. L'Algorithme "Gauss-Jordan"</h2>
+                        <span class="badge math">Algèbre Linéaire</span>
+                    </div>
+                    <div class="algo-content">
+                        <p>Ici, l'IA ne joue pas : elle <b>résout</b> le système. Elle traduit la grille en équations.</p>
+                        <div class="math-block">
+                            <h4>🧮 Le Système Modulo 2</h4>
+                            <code>Ax = b</code>
+                        </div>
+                        <p>En inversant la matrice <b>A</b>, l'IA trouve le vecteur <b>x</b> (la solution parfaite).</p>
+                    </div>
+                </div>
+
+                <div class="algo-section expert-theme">
+                    <div class="algo-header mode-expert-header">
+                        <h2><i class="fas fa-user-graduate"></i> 3. La Méthode des Experts Humains</h2>
+                        <span class="badge expert">Hybride</span>
+                    </div>
+                    <div class="algo-content">
+                        <p>Il existe une troisième voie, utilisée par les speedrunners humains.</p>
+                        <ol class="step-list">
+                            <li>Faire un <b>Light Chasing</b> classique jusqu'en bas.</li>
+                            <li>Observer les lumières restantes sur la dernière ligne.</li>
+                            <li>Utiliser une <b>"Table de Correspondance"</b> pour cliquer sur la première ligne.</li>
+                            <li>Refaire un Chasing : la grille se résout alors magiquement !</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <a href="index.html" class="back-btn btn-link">Retour au Jeu</a>
+            </div>
+
+            <div id="view-lab" class="tab-content hidden">
+                <div class="algo-section">
+                    <div class="algo-header mode-math-header">
+                        <h2><span class="icon">🧮</span> Simulation Matricielle 3x3</h2>
+                    </div>
+
+                    <p style="text-align: center; margin-bottom: 20px; color: #94a3b8;">
+                        Regarde l'IA calculer la solution en temps réel.
+                    </p>
+
+                    <div class="console-box">
+                        <div class="console-header">
+                            <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+                            <span>terminal_ia.exe</span>
+                        </div>
+                        <div id="console-log" class="console-content">
+                            > En attente d'entrée utilisateur...
+                        </div>
+                    </div>
+
+                    <div class="matrix-sim-container">
+                        <div class="sim-column">
+                            <h4>Vecteur Solution (x)</h4>
+                            <div class="vector-bracket result">
+                                <div id="vector-x" class="vector-content matrix-3x3"></div>
+                            </div>
+                            <div id="sim-grid-x" class="mini-grid solution-grid"></div>
+                        </div>
+
+                        <div class="sim-operator">
+                            <div class="arrow-right">➜</div>
+                            <div class="math-symbol">Application<br>Matrice A</div>
+                            <div class="arrow-right">➜</div>
+                        </div>
+
+                        <div class="sim-column">
+                            <h4>État Résultant (b)</h4>
+                            <div class="vector-bracket">
+                                <div id="vector-b" class="vector-content matrix-3x3"></div>
+                            </div>
+                            <div id="sim-grid-b" class="mini-grid"></div>
+                        </div>
+                    </div>
+
+                    <div style="text-align: center; margin-top: 30px; display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;">
+                        <button id="btn-sim" onclick="runSimulation()" class="promo-btn">
+                            <i class="fas fa-play"></i> Générer un calcul
+                        </button>
+                        
+                        <button id="btn-try-game" onclick="tryInGame()" class="promo-btn" style="background: #10b981 !important; display: none;">
+                            <i class="fas fa-gamepad"></i> Essayer cette grille en Jeu
+                        </button>
+                    </div>
+                </div>
+                
+                <a href="index.html" class="back-btn btn-link">Retour au Jeu</a>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        // Variables globales pour stocker l'état actuel de la simulation
+        let currentGridState = []; 
+
+        function switchTab(tabName) {
+            document.getElementById('view-history').classList.add('hidden');
+            document.getElementById('view-lab').classList.add('hidden');
+            const btns = document.querySelectorAll('.tab-btn');
+            btns.forEach(b => b.classList.remove('active'));
+
+            document.getElementById('view-' + tabName).classList.remove('hidden');
+            
+            if(tabName === 'lab') {
+                btns[1].classList.add('active');
+            } else {
+                btns[0].classList.add('active');
+            }
+        }
+
+        async function runSimulation() {
+            const btn = document.getElementById('btn-sim');
+            const btnTry = document.getElementById('btn-try-game');
+            
+            btn.disabled = true; 
+            btn.style.opacity = "0.5";
+            btnTry.style.display = "none"; // On cache le bouton "Essayer" pendant le calcul
+
+            const log = document.getElementById('console-log');
+            const vx = document.getElementById('vector-x');
+            const vb = document.getElementById('vector-b');
+            const gx = document.getElementById('sim-grid-x');
+            const gb = document.getElementById('sim-grid-b');
+
+            // Reset
+            vx.innerHTML = ''; vb.innerHTML = ''; gx.innerHTML = ''; gb.innerHTML = '';
+            
+            // 1. Génération Solution (X)
+            logTyping(log, "> Initialisation du noyau 3x3...");
+            await wait(500);
+            
+            logTyping(log, "> Génération d'une solution aléatoire...");
+            const size = 3; 
+            const total = size * size;
+            let x = [];
+            for(let i=0; i<total; i++) x.push(Math.random() > 0.5 ? 1 : 0);
+            
+            renderMatrix('vector-x', x);
+            renderGrid('sim-grid-x', x, true);
+            await wait(800);
+
+            // 2. Calcul du Problème (B)
+            logTyping(log, "> Calcul de la configuration inverse (Ax = b)...");
+            
+            // Calcul mathématique
+            let b = new Array(total).fill(0);
+            for(let r=0; r<size; r++) {
+                for(let c=0; c<size; c++) {
+                    let idx = r*size + c;
+                    if(x[idx] === 1) {
+                        toggle(b, r, c, size); toggle(b, r+1, c, size); toggle(b, r-1, c, size);
+                        toggle(b, r, c+1, size); toggle(b, r, c-1, size);
+                    }
+                }
+            }
+            // Sauvegarde pour le bouton "Essayer"
+            currentGridState = b;
+
+            await wait(800);
+
+            // 3. Affichage Résultat
+            logTyping(log, "> SUCCESS. Configuration générée.");
+            logTyping(log, "> Prêt pour exportation vers le moteur de jeu.");
+            
+            renderMatrix('vector-b', b);
+            renderGrid('sim-grid-b', b, false);
+
+            btn.disabled = false;
+            btn.style.opacity = "1";
+            
+            // Apparition du bouton "Essayer"
+            btnTry.style.display = "inline-block";
+            btnTry.classList.add('pulse-anim'); // Petite animation CSS (à ajouter)
+        }
+
+        // Fonction pour envoyer la grille vers le jeu
+        function tryInGame() {
+            // On transforme le tableau [1, 0, 1...] en chaine "101..."
+            const gridString = currentGridState.join('');
+            // On redirige vers index.html avec des paramètres
+            // Note: Il faudra ajouter un petit bout de code dans script.js pour lire ça !
+            window.location.href = `index.html?loadgrid=${gridString}&rows=3&cols=3`;
+        }
+
+        function logTyping(element, text) {
+            element.innerHTML += `<div>${text}</div>`;
+            element.scrollTop = element.scrollHeight;
+        }
+
+        function wait(ms) { return new Promise(resolve => setTimeout(resolve, ms)); }
+
+        function toggle(arr, r, c, size) {
+            if(r >= 0 && r < size && c >= 0 && c < size) arr[r*size + c] = 1 - arr[r*size + c];
+        }
+
+        function renderMatrix(id, data) {
+            document.getElementById(id).innerHTML = data.map(val => `<span class="${val===1 ? 'v-on' : 'v-off'}">${val}</span>`).join('');
+        }
+
+        function renderGrid(id, data, isSolution) {
+            const el = document.getElementById(id); el.innerHTML = '';
+            data.forEach(val => {
+                let div = document.createElement('div');
+                div.className = isSolution ? (val === 1 ? 'mini-cell sol-active' : 'mini-cell') : (val === 1 ? 'mini-cell active' : 'mini-cell');
+                el.appendChild(div);
+            });
+        }
+    </script>
+</body>
+</html>
