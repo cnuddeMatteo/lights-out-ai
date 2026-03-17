@@ -69,7 +69,7 @@ Ouvrir le fichier `index.html` dans un navigateur.
 **Mattéo Cnudde** — *Étudiant en Cybersécurité & Développeur*
 
 - **GitHub :** https://github.com/cnuddeMatteo  
-- **LinkedIn :** https://www.linkedin.com/in/votre-profil-ici/
+- **LinkedIn :** https://www.linkedin.com/in/mattéo-cnudde-71a7b5327/
 
 ---
 
