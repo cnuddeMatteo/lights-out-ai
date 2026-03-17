@@ -4,7 +4,7 @@
 
 **Lights_Out** est une adaptation moderne du célèbre jeu de réflexion électronique des années 90. Ce projet explore la logique de voisinage et la résolution de systèmes d'équations linéaires à travers une interface fluide et réactive.
 
-🔗 **[Jouer en ligne](#)** *(Insère ton lien GitHub Pages ici)*
+🔗 **[Jouer en ligne](#)** *(https://cnuddematteo.github.io/lights-out-ai/)*
 
 ---
 
@@ -54,4 +54,4 @@ Où :
 
 1. **Cloner le dépôt :**
    ```bash
-   git clone [https://github.com/cnuddeMatteo/lights_out.git](https://github.com/cnuddeMatteo/lights_out.git)
+   git clone [https://github.com/cnuddeMatteo/lights_out-ai.git](https://github.com/cnuddeMatteo/lights_out.git)
