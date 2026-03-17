@@ -1,21 +1,3 @@
-## 📂 Architecture du Projet
-
-Une structure **Vanilla JS** propre et modulaire, idéale pour un portfolio performant :
-
-```text
-lights_out-ai/
-├── index.html          # Structure HTML et interface utilisateur
-├── style.css           # Design Neon-Glassmorphism (CSS Moderne)
-├── script.js           # Moteur du jeu, gestion des clics et événements
-├── solver.js           # IA : Résolution par élimination de Gauss-Jordan (Maths)
-└── README.md           # Documentation technique et mathématique
-```
-
------
-
-## 📄 Contenu du README.md
-
-````markdown
 # 💡 Lights_Out AI
 
 > **Un puzzle binaire minimaliste doublé d'un solveur mathématique puissant.**
@@ -71,24 +53,3 @@ Où :
 1. **Cloner le dépôt :**
    ```bash
    git clone [https://github.com/cnuddeMatteo/lights_out-ai.git](https://github.com/cnuddeMatteo/lights_out-ai.git)
-````
-
-2.  **Lancer le jeu :**
-    Ouvrez simplement le fichier `index.html` dans votre navigateur web préféré.
-
------
-
-## 👤 Auteur
-
-**Mattéo Cnudde** - *Étudiant en Cybersécurité & Développeur*
-
-  * [GitHub](https://github.com/cnuddeMatteo)
-  * [LinkedIn](https://www.google.com/search?q=%23)
-
-> *"L'obscurité est l'état final de la logique."*
-
-```
-
-
-Souhaites-tu que je t'aide à rédiger le **LinkedIn post** parfait pour annoncer la sortie de ton portfolio `Cyber_Nexus` ?
-```
